@@ -1,0 +1,15 @@
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\bin\Debug\net8.0-windows\FalconCanBridge.CanBus.deps.json
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\bin\Debug\net8.0-windows\FalconCanBridge.CanBus.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\bin\Debug\net8.0-windows\FalconCanBridge.CanBus.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\bin\Debug\net8.0-windows\FalconCanBridge.Core.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\bin\Debug\net8.0-windows\FalconCanBridge.Core.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\FalconCanBridge.CanBus.csproj.AssemblyReference.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\FalconCanBridge.CanBus.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\FalconCanBridge.CanBus.AssemblyInfoInputs.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\FalconCanBridge.CanBus.AssemblyInfo.cs
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\FalconCanBridge.CanBus.csproj.CoreCompileInputs.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\FalconCa.DB476507.Up2Date
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\FalconCanBridge.CanBus.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\refint\FalconCanBridge.CanBus.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\FalconCanBridge.CanBus.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.CanBus\obj\Debug\net8.0-windows\ref\FalconCanBridge.CanBus.dll
