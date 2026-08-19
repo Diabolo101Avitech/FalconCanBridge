@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "AIRSPEED",
+    "Kind": "Number",
+    "Address": 0,
+    "Mask": 65535,
+    "ShiftBy": 0,
+    "Scale": 1.0,
+    "Offset": 0.0,
+    "StringLength": 0,
+    "Notes": "PLACEHOLDER - Address/Mask must be plain decimal numbers here (JSON has no hex literal). Replace with the real values from your aircraft's DCS-BIOS control reference (open the DCS-BIOS Hub web UI, pick your module, find the output you want, and convert its 'address'/'mask'/'shift_by' from hex to decimal, e.g. 0x1234 -> 4660)."
+  },
+  {
+    "Name": "UFC_SCRATCHPAD",
+    "Kind": "String",
+    "Address": 0,
+    "StringLength": 16,
+    "Notes": "PLACEHOLDER - example of a String-kind output (e.g. a UFC/CDU scratchpad line). Replace Address and StringLength with real values for your aircraft."
+  }
+]

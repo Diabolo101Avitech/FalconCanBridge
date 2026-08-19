@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>FalconCanBridge.App</RootNamespace>
+    <AssemblyName>FalconCanBridge</AssemblyName>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FalconCanBridge.Core\FalconCanBridge.Core.csproj" />
+    <ProjectReference Include="..\FalconCanBridge.Simulators.Falcon4\FalconCanBridge.Simulators.Falcon4.csproj" />
+    <ProjectReference Include="..\FalconCanBridge.Simulators.Dcs\FalconCanBridge.Simulators.Dcs.csproj" />
+    <ProjectReference Include="..\FalconCanBridge.CanBus\FalconCanBridge.CanBus.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config\mapping.sample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="config\dcs-bios-fields.sample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="config\falcon4-fields.sample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="config\falcon4-keybindings.sample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

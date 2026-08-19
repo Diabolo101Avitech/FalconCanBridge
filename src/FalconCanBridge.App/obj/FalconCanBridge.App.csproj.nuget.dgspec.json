@@ -1,0 +1,367 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj",
+        "projectName": "FalconCanBridge",
+        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj",
+        "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\virwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj": {
+                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj"
+              },
+              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
+              },
+              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj": {
+                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj"
+              },
+              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj": {
+                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj",
+        "projectName": "FalconCanBridge.CanBus",
+        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj",
+        "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\virwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "System.IO.Ports": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
+        "projectName": "FalconCanBridge.Core",
+        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
+        "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\virwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj",
+        "projectName": "FalconCanBridge.Simulators.Dcs",
+        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj",
+        "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\virwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj",
+        "projectName": "FalconCanBridge.Simulators.Falcon4",
+        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj",
+        "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\virwa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

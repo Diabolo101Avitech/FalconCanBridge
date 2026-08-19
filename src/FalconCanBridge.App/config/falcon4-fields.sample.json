@@ -1,0 +1,19 @@
+[
+  { "Name": "PositionX",         "ByteOffset": 0,  "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "PositionY",         "ByteOffset": 4,  "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "PositionZ",         "ByteOffset": 8,  "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "VelocityX",         "ByteOffset": 12, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "VelocityY",         "ByteOffset": 16, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "VelocityZ",         "ByteOffset": 20, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "AngleOfAttackDeg",  "ByteOffset": 24, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "SideslipDeg",       "ByteOffset": 28, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "FlightPathDeg",     "ByteOffset": 32, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "PitchDeg",          "ByteOffset": 36, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "RollDeg",           "ByteOffset": 40, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "YawDeg",            "ByteOffset": 44, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "Mach",              "ByteOffset": 48, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "AirspeedKias",      "ByteOffset": 52, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "TrueAirspeedFtSec", "ByteOffset": 56, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "AltitudeMslFt",     "ByteOffset": 60, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
+  { "Name": "AltitudeAglFt",     "ByteOffset": 64, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" }
+]
