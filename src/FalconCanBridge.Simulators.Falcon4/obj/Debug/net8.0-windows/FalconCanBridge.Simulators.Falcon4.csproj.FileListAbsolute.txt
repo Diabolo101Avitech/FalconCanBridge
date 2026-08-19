@@ -1,0 +1,15 @@
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\bin\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.deps.json
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\bin\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\bin\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\bin\Debug\net8.0-windows\FalconCanBridge.Core.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\bin\Debug\net8.0-windows\FalconCanBridge.Core.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.csproj.AssemblyReference.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.AssemblyInfoInputs.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.AssemblyInfo.cs
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.csproj.CoreCompileInputs.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\FalconCa.4A9AEDD8.Up2Date
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\refint\FalconCanBridge.Simulators.Falcon4.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Falcon4.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Falcon4\obj\Debug\net8.0-windows\ref\FalconCanBridge.Simulators.Falcon4.dll
