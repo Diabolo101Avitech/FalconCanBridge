@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "FalconCanBridge.Core/1.0.0": {
+        "runtime": {
+          "FalconCanBridge.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FalconCanBridge.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
