@@ -1,0 +1,15 @@
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\bin\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.deps.json
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\bin\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\bin\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\bin\Debug\net8.0-windows\FalconCanBridge.Core.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\bin\Debug\net8.0-windows\FalconCanBridge.Core.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.csproj.AssemblyReference.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.AssemblyInfoInputs.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.AssemblyInfo.cs
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.csproj.CoreCompileInputs.cache
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\FalconCa.FFA9D763.Up2Date
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\refint\FalconCanBridge.Simulators.Dcs.dll
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\FalconCanBridge.Simulators.Dcs.pdb
+C:\Users\virwa\Downloads\Claude\FalconCanBridge\src\FalconCanBridge.Simulators.Dcs\obj\Debug\net8.0-windows\ref\FalconCanBridge.Simulators.Dcs.dll

@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "FalconCanBridge.Simulators.Dcs/1.0.0": {
+        "dependencies": {
+          "FalconCanBridge.Core": "1.0.0"
+        },
+        "runtime": {
+          "FalconCanBridge.Simulators.Dcs.dll": {}
+        }
+      },
+      "FalconCanBridge.Core/1.0.0": {
+        "runtime": {
+          "FalconCanBridge.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FalconCanBridge.Simulators.Dcs/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FalconCanBridge.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
