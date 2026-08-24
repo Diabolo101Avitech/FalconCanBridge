@@ -244,8 +244,17 @@ public sealed class MainViewModel : ObservableObject
 
     private Falcon4Connector CreateFalcon4Connector()
     {
+        // Falcon4FieldMap() now loads the comprehensive built-in field table (every scalar/RWR/
+        // light-bit signal from BMS's primary shared-memory block - see Falcon4FieldMap remarks).
+        // The optional JSON file next to the exe ADDS to or OVERRIDES individual entries of that
+        // table by Name rather than replacing it wholesale, so a stock install still gets full
+        // telemetry coverage even without a custom fields file.
+        var fieldMap = new Falcon4FieldMap();
         string fieldsPath = Path.Combine(AppContext.BaseDirectory, "config", "falcon4-fields.sample.json");
-        var fieldMap = File.Exists(fieldsPath) ? Falcon4FieldMap.LoadFromFile(fieldsPath) : new Falcon4FieldMap();
+        if (File.Exists(fieldsPath))
+        {
+            fieldMap.MergeFromFile(fieldsPath);
+        }
 
         var connector = new Falcon4Connector(fieldMap);
 

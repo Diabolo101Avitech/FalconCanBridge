@@ -9,21 +9,23 @@ public enum Falcon4FieldType
     Int16,
     UInt16,
     Byte,
+    /// <summary>Signed 8-bit value (e.g. BMS's iffTransponderActiveCode1, where negative = OFF/n.a.).</summary>
+    SByte,
     /// <summary>A single bit inside the byte at ByteOffset, bit index given by BitIndex.</summary>
     Bit
 }
 
 /// <summary>
-/// Describes how to pull one named telemetry value out of the raw
-/// "FalconSharedMemoryArea" memory-mapped buffer.
+/// Describes how to pull one named telemetry value out of a raw "FalconSharedMemoryArea"/
+/// "FalconSharedMemoryArea2" memory-mapped buffer.
 ///
-/// IMPORTANT - offsets are configuration, not hardcoded C structs, precisely because the
-/// exact byte layout of BMS's shared memory changes slightly between versions and is only
-/// authoritatively defined by the FalconSharedMemoryArea.h header shipped with each BMS
-/// install (and by the community-maintained F4SharedMem reference project). Ship this app
-/// with the bundled defaults in config/falcon4-fields.sample.json, but treat them as a
-/// starting point: verify/correct offsets for your BMS version using the raw hex/"signal
-/// scanner" diagnostic view in the app before trusting any value for real hardware.
+/// The app's built-in default table (see <see cref="Falcon4FieldMap.BuildDefault"/>/
+/// <see cref="Falcon4FieldMap.BuildSecondaryDefault"/>) is generated from vendored copies of BMS's
+/// own struct layout (lightningstools/F4SharedMem), with offsets computed by the .NET marshaler
+/// rather than hand-typed - see <c>Falcon4NativeFieldMapBuilder</c>. An optional
+/// config/falcon4-fields.sample.json next to the exe can still add/override individual entries by
+/// <see cref="Name"/> without recompiling. Either way, verify signals for your BMS version using
+/// the Live Telemetry tab before trusting any value on real hardware.
 /// </summary>
 public sealed class Falcon4FieldDefinition
 {

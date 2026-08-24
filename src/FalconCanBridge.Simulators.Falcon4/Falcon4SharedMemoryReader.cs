@@ -13,23 +13,38 @@ namespace FalconCanBridge.Simulators.Falcon4;
 /// </summary>
 public sealed class Falcon4SharedMemoryReader : IDisposable
 {
+    /// <summary>The primary telemetry block - basic flight/attitude/systems data (BMS's BMS4FlightData struct).</summary>
     public const string MemoryMappedFileName = "FalconSharedMemoryArea";
 
+    /// <summary>The secondary telemetry block - added over later BMS4 versions (BMS's FlightData2 struct).</summary>
+    public const string SecondaryMemoryMappedFileName = "FalconSharedMemoryArea2";
+
+    private readonly string _mappingName;
     private MemoryMappedFile? _mmf;
     private MemoryMappedViewAccessor? _accessor;
+
+    /// <param name="mappingName">
+    /// Name of the Windows named shared-memory section to open - defaults to the primary
+    /// <see cref="MemoryMappedFileName"/>. Pass <see cref="SecondaryMemoryMappedFileName"/> for a
+    /// second reader instance targeting BMS's secondary telemetry block.
+    /// </param>
+    public Falcon4SharedMemoryReader(string? mappingName = null)
+    {
+        _mappingName = mappingName ?? MemoryMappedFileName;
+    }
 
     public bool IsOpen => _accessor is not null;
 
     /// <summary>Actual size in bytes of the opened mapping, once known.</summary>
     public long Capacity => _accessor?.Capacity ?? 0;
 
-    /// <summary>Attempts to open the mapping. Returns false (without throwing) if BMS is not currently running a mission.</summary>
+    /// <summary>Attempts to open the mapping. Returns false (without throwing) if BMS is not currently running a mission (or, for the secondary block, if this BMS build/version doesn't publish it).</summary>
     public bool TryOpen()
     {
         Close();
         try
         {
-            _mmf = MemoryMappedFile.OpenExisting(MemoryMappedFileName, MemoryMappedFileRights.Read);
+            _mmf = MemoryMappedFile.OpenExisting(_mappingName, MemoryMappedFileRights.Read);
             // size 0 => map the entire underlying section so we learn its real capacity.
             _accessor = _mmf.CreateViewAccessor(0, 0, MemoryMappedFileAccess.Read);
             return true;
