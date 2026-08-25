@@ -17,7 +17,7 @@ CAN bus drive commands back into the sim.
 
 | Project | Responsibility |
 |---|---|
-| `FalconCanBridge.Core` | Shared models (`CanFrame`, `TelemetrySnapshot`, `SignalMapping`), the `ISimulatorConnector`/`ICanBusAdapter` interfaces, and `MappingEngine` (the bidirectional signal <-> CAN-frame packing/unpacking engine). |
+| `FalconCanBridge.Core` | Shared models (`CanFrame`, `TelemetrySnapshot`, `SignalMapping`), the `ISimulatorConnector`/`ICanBusAdapter` interfaces, `MappingEngine` (the bidirectional signal <-> CAN-frame packing/unpacking engine), and an optional `CanOpen/` layer (NMT master, heartbeat consumer, expedited SDO client) for STM32 nodes that speak CANopen instead of raw custom frames - see "CANopen support" below. |
 | `FalconCanBridge.Simulators.Falcon4` | Reads the `FalconSharedMemoryArea` shared-memory block BMS publishes; sends input back as simulated keystrokes. |
 | `FalconCanBridge.Simulators.Dcs` | DCS-BIOS UDP export-stream parser + command sender. |
 | `FalconCanBridge.CanBus` | `SlcanSerialAdapter` (STM32 USB-CDC, SLCAN/LAWICEL protocol) and `PcanBasicAdapter` (PEAK PCAN-USB, optional). |
@@ -53,8 +53,79 @@ Or open `FalconCanBridge.sln` in Visual Studio 2022+ and run `FalconCanBridge.Ap
 3. **Live Telemetry tab**: sanity-check the raw signal names/values coming from the connected
    simulator.
 4. **CAN Traffic tab**: watch actual TX/RX frames on the bus - the fastest way to verify your
-   mapping and your STM32 firmware agree on IDs/byte layout.
+   mapping and your STM32 firmware agree on IDs/byte layout. A "CANopen" column best-effort-labels
+   any frame whose ID matches the CANopen predefined connection set (e.g. "Heartbeat node 5"),
+   whether or not you've ticked "Enable CANopen" below - it's just an ID-pattern label.
 5. **Log tab**: connection/adapter status and errors.
+
+## CANopen support (optional layer over the CAN adapter)
+
+If your STM32 firmware speaks **CANopen** (CiA 301) instead of talking raw custom CAN frames,
+tick **Enable CANopen** in the Connections tab (under the CAN adapter, once it's open) instead of
+writing a bespoke frame format. CANopen is a payload-level protocol - it doesn't care whether the
+bytes travel over the `SlcanSerialAdapter` or `PcanBasicAdapter` transport underneath, so this
+works with either.
+
+What's implemented (`FalconCanBridge.Core/CanOpen/`):
+
+- **NMT master** (`CanOpenNmtMaster`): Start/Stop/Reset buttons in the UI, plus an "auto-start on
+  Open" option that sends NMT Start to your configured Node ID as soon as the CAN adapter opens -
+  a CANopen node only exchanges PDOs once it's in the Operational state, so without this (or your
+  firmware self-transitioning to Operational) your PDOs will silently go nowhere.
+- **Heartbeat consumer** (`CanOpenHeartbeatMonitor`): listens for the node's heartbeat (COB-ID
+  `0x700+NodeID`) and shows its live NMT state (BootUp/Stopped/Operational/PreOperational) with a
+  green/red status dot, and flags a heartbeat timeout (default 2000 ms) if the node goes quiet -
+  requires your firmware to actually produce heartbeats (a fixed 1000 ms is a common default).
+- **Expedited SDO client** (`CanOpenSdoClient`): a Read/Write test panel for one object dictionary
+  index:subindex at a time (1-4 byte values - UInt8/Int8/UInt16/Int16/UInt32/Int32/Float32), for
+  configuration registers that aren't exchanged cyclically (e.g. a calibration constant or a
+  threshold), plus the same typed methods programmatically if you want to script something beyond
+  the UI's one-shot Read/Write buttons.
+- **PDOs need no dedicated UI at all**: a PDO is nothing more than a plain CAN frame at a fixed
+  COB-ID, and the existing CAN Mapping tab already packs/unpacks arbitrary CAN IDs byte-for-byte -
+  just set a mapping row's `CAN ID` to the PDO's COB-ID directly. `CanOpenCobId` documents (and can
+  compute) the predefined connection set so you don't have to hand-add hex:
+
+  | Function | COB-ID | Direction |
+  |---|---|---|
+  | NMT | `0x000` | master -> all |
+  | SYNC | `0x080` | master -> all |
+  | EMCY | `0x080 + NodeID` | node -> master |
+  | TPDO1 / RPDO1 | `0x180 + NodeID` / `0x200 + NodeID` | node->master / master->node |
+  | TPDO2 / RPDO2 | `0x280 + NodeID` / `0x300 + NodeID` | node->master / master->node |
+  | TPDO3 / RPDO3 | `0x380 + NodeID` / `0x400 + NodeID` | node->master / master->node |
+  | TPDO4 / RPDO4 | `0x480 + NodeID` / `0x500 + NodeID` | node->master / master->node |
+  | SDO tx (response) / rx (request) | `0x580 + NodeID` / `0x600 + NodeID` | node->master / master->node |
+  | Heartbeat | `0x700 + NodeID` | node -> master |
+
+  e.g. node ID 5's TPDO1 is `0x185` - enter that as the mapping row's `CAN ID` exactly like any
+  other frame, with `Direction=CanToSim` if the node is *sending* it (a switch/encoder value) or
+  `Direction=SimToCan` if the PC is *sending* it as an RPDO (a gauge/LED command).
+
+What's **not** implemented - keep these in mind when writing your STM32 firmware:
+
+- **Segmented SDO transfers** (values >4 bytes, e.g. reading back a firmware-version string) -
+  `CanOpenSdoClient` only speaks the expedited variant. Keep configuration objects to 4 bytes or
+  fewer, or extend `CanOpenSdoClient` (it's a small, self-contained class) if you need more.
+- **Dynamic PDO remapping via SDO** (changing which object dictionary entries a PDO carries at
+  runtime) - this app always assumes the *default* predefined-connection-set COB-IDs above and
+  whatever fixed byte layout you configure in the CAN Mapping tab; if your firmware remaps PDOs to
+  different COB-IDs, update the mapping rows' `CAN ID` to match, but there's no SDO-driven
+  auto-negotiation.
+- **LSS** (automatic node-ID/bitrate assignment) - your STM32 firmware needs a fixed, known node ID
+  configured some other way (DIP switches, a compiled-in constant, ...).
+- **SYNC-driven synchronous PDOs** - this app never sends a SYNC frame itself and doesn't need to:
+  PDOs here are always the simpler, more common "asynchronous"/event-driven kind, already
+  rate-limited by each mapping row's `Rate ms`/`Threshold` settings exactly like non-CANopen
+  mappings. If your firmware's PDOs are configured to only transmit on SYNC, either reconfigure
+  them to transmit asynchronously, or add a small SYNC producer yourself (`CanOpenCobId.Sync` gives
+  you the COB-ID; sending it is a one-line `ICanBusAdapter.SendAsync`).
+- Like everything else in this repo, **this was written and reviewed without a live CANopen node
+  to test against** (no Windows/dotnet/CAN hardware in the authoring environment) - the COB-ID
+  arithmetic and SDO expedited-transfer command-specifier bytes follow CiA 301 exactly, but
+  exercise the Start/Stop/Reset buttons and a couple of SDO reads against your actual node before
+  relying on it, the same way you'd sanity-check the Falcon 4 field table against the Live
+  Telemetry tab.
 
 ## Known limitations - please read before wiring real hardware
 
@@ -100,7 +171,8 @@ best-effort:
 - The STM32 side isn't included as firmware - see `firmware/stm32-slcan-notes/README.md` for
   exactly what your STM32 firmware needs to implement (the SLCAN command set) and pointers to
   existing open-source starting points, plus a `PcanBasicAdapter` alternative if you'd rather
-  reach the STM32 nodes through a PEAK PCAN-USB dongle instead of a custom USB-CDC bridge.
+  reach the STM32 nodes through a PEAK PCAN-USB dongle instead of a custom USB-CDC bridge. If your
+  firmware speaks CANopen instead of raw frames, see `firmware/stm32-canopen-notes/README.md` too.
 
 None of this changes the architecture - `MappingEngine`, both connectors, and both CAN adapters
 are fully implemented - it's specifically the *exact numeric addresses/offsets*, which are
@@ -120,3 +192,7 @@ inherently sim-version- and aircraft-specific, that need a verification pass aga
 - Add more BMS key bindings for CanToSim input: extend `config/falcon4-keybindings.sample.json`.
 - Add a different CAN transport: implement `ICanBusAdapter` (see `SlcanSerialAdapter` for the
   shape) and wire it into `MainViewModel.ConnectCanAsync`.
+- Extend CANopen support: `FalconCanBridge.Core/CanOpen/` is a small, self-contained set of classes
+  (`CanOpenCobId`, `CanOpenNmtMaster`, `CanOpenHeartbeatMonitor`, `CanOpenSdoClient`) with no WPF/UI
+  dependency - segmented SDO transfers or a SYNC producer, for instance, would both be a new class
+  in that folder plus a small hook in `MainViewModel`, not a redesign.
