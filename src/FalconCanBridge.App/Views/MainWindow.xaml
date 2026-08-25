@@ -38,7 +38,8 @@
 
             <!-- ================= Connections ================= -->
             <TabItem Header="Connections">
-                <Grid Margin="10">
+                <DockPanel Margin="10">
+                <Grid DockPanel.Dock="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -119,6 +120,60 @@
                         </StackPanel>
                     </GroupBox>
                 </Grid>
+
+                <GroupBox Header="CANopen (optional protocol layer over the CAN adapter above)" DockPanel.Dock="Top" Margin="0,8,0,0" Padding="10">
+                    <StackPanel>
+                        <CheckBox Content="Enable CANopen (NMT master + heartbeat consumer)" IsChecked="{Binding EnableCanOpen}" />
+                        <CheckBox Content="Auto-start node on Open (send NMT Start)" IsChecked="{Binding CanOpenAutoStart}" Margin="0,4,0,0" />
+
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Node ID:" VerticalAlignment="Center" Margin="0,0,8,0" />
+                            <TextBox Grid.Column="1" Text="{Binding CanOpenNodeId, UpdateSourceTrigger=PropertyChanged}" Width="70" HorizontalAlignment="Left" />
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Ellipse Width="12" Height="12" Fill="{Binding IsCanOpenNodeOperational, Converter={StaticResource BoolToBrush}}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                            <TextBlock Text="{Binding CanOpenNodeStatus}" VerticalAlignment="Center" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Button Content="Start Node" Width="100" Margin="0,0,8,0" Command="{Binding StartNodeCommand}" />
+                            <Button Content="Stop Node" Width="100" Margin="0,0,8,0" Command="{Binding StopNodeCommand}" />
+                            <Button Content="Reset Node" Width="100" Command="{Binding ResetNodeCommand}" />
+                        </StackPanel>
+
+                        <Separator Margin="0,14,0,10" />
+
+                        <TextBlock Text="SDO test (read/write one object dictionary entry on the node above)" FontWeight="SemiBold" Margin="0,0,0,6" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Index (hex):" VerticalAlignment="Center" Margin="0,0,4,0" />
+                            <TextBox Text="{Binding SdoIndexHex, UpdateSourceTrigger=PropertyChanged}" Width="70" Margin="0,0,14,0" />
+
+                            <TextBlock Text="Sub:" VerticalAlignment="Center" Margin="0,0,4,0" />
+                            <TextBox Text="{Binding SdoSubIndex, UpdateSourceTrigger=PropertyChanged}" Width="40" Margin="0,0,14,0" />
+
+                            <ComboBox ItemsSource="{Binding SdoDataTypeChoices}" SelectedItem="{Binding SdoDataType}" Width="80" Margin="0,0,14,0" />
+
+                            <TextBox Text="{Binding SdoValueText, UpdateSourceTrigger=PropertyChanged}" Width="110" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="Read" Width="90" Margin="0,0,8,0" Command="{Binding SdoReadCommand}" />
+                            <Button Content="Write" Width="90" Command="{Binding SdoWriteCommand}" />
+                        </StackPanel>
+
+                        <TextBlock Text="{Binding SdoResult}" Margin="0,8,0,0" TextWrapping="Wrap" Foreground="Gray" />
+
+                        <TextBlock Margin="0,16,0,0" TextWrapping="Wrap" Foreground="Gray">
+                            Layers CANopen (CiA 301) on top of whichever adapter is open above: sends NMT commands, consumes the node's heartbeat for a live status, and can read/write individual SDO registers. PDOs need no separate UI - map a PDO's COB-ID directly in the CAN Mapping tab (e.g. 0x180+NodeID for TPDO1) exactly like any other CAN ID; see README "CANopen support" for the full COB-ID table and what isn't implemented (segmented SDO, dynamic PDO remapping, LSS).
+                        </TextBlock>
+                    </StackPanel>
+                </GroupBox>
+                </DockPanel>
             </TabItem>
 
             <!-- ================= Live Telemetry ================= -->
@@ -179,6 +234,7 @@
                             <DataGridTextColumn Header="Time" Binding="{Binding Timestamp, StringFormat=HH:mm:ss.fff}" Width="110" />
                             <DataGridTextColumn Header="Dir" Binding="{Binding Direction}" Width="60" />
                             <DataGridTextColumn Header="ID" Binding="{Binding IdHex}" Width="90" />
+                            <DataGridTextColumn Header="CANopen" Binding="{Binding CanOpenLabel}" Width="120" />
                             <DataGridTextColumn Header="DLC" Binding="{Binding Dlc}" Width="50" />
                             <DataGridTextColumn Header="Data" Binding="{Binding DataHex}" Width="*" />
                         </DataGrid.Columns>

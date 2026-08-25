@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Threading;
 using FalconCanBridge.App.Mvvm;
 using FalconCanBridge.CanBus.Adapters;
+using FalconCanBridge.Core.CanOpen;
 using FalconCanBridge.Core.Interfaces;
 using FalconCanBridge.Core.Logging;
 using FalconCanBridge.Core.Mapping;
@@ -41,6 +42,10 @@ public sealed class MainViewModel : ObservableObject
 
     private ISimulatorConnector? _activeConnector;
     private ICanBusAdapter? _activeCanAdapter;
+
+    private CanOpenNmtMaster? _canOpenNmtMaster;
+    private CanOpenHeartbeatMonitor? _canOpenHeartbeatMonitor;
+    private CanOpenSdoClient? _canOpenSdoClient;
 
     public ObservableCollection<TelemetryRowViewModel> Telemetry { get; } = new();
     public ObservableCollection<CanTrafficRowViewModel> CanTraffic { get; } = new();
@@ -90,6 +95,76 @@ public sealed class MainViewModel : ObservableObject
     private string _pcanChannel = "USB1";
     public string PcanChannel { get => _pcanChannel; set => SetField(ref _pcanChannel, value); }
 
+    // CANopen settings - layered on top of whichever CAN adapter is open (SLCAN or PCAN); CANopen
+    // is a payload-level protocol, indifferent to the physical transport underneath it.
+    private bool _enableCanOpen;
+    /// <summary>
+    /// Toggling this while the CAN adapter is already open takes effect immediately (sets up or
+    /// tears down the NMT master/heartbeat monitor/SDO client there and then, and auto-starts the
+    /// node per <see cref="CanOpenAutoStart"/>) rather than only on the next "Open" - the adapter
+    /// connection itself isn't affected either way.
+    /// </summary>
+    public bool EnableCanOpen
+    {
+        get => _enableCanOpen;
+        set
+        {
+            if (!SetField(ref _enableCanOpen, value)) return;
+            if (!IsCanOpen || _activeCanAdapter is null) return;
+
+            if (value)
+            {
+                SetupCanOpen(_activeCanAdapter);
+                if (CanOpenAutoStart)
+                {
+                    _ = AutoStartNodeAsync();
+                }
+            }
+            else
+            {
+                TeardownCanOpen();
+            }
+        }
+    }
+
+    private int _canOpenNodeId = 1;
+    /// <summary>
+    /// Target node ID for NMT commands, the node-status readout, and the SDO test panel. Takes
+    /// effect on the next "Open" of the CAN adapter - the heartbeat monitor tracks every node it
+    /// sees regardless, but the SDO client and manual NMT buttons are bound to this one node.
+    /// </summary>
+    public int CanOpenNodeId { get => _canOpenNodeId; set => SetField(ref _canOpenNodeId, value); }
+
+    private bool _canOpenAutoStart = true;
+    /// <summary>If set, sends NMT Start to <see cref="CanOpenNodeId"/> automatically right after the CAN adapter opens.</summary>
+    public bool CanOpenAutoStart { get => _canOpenAutoStart; set => SetField(ref _canOpenAutoStart, value); }
+
+    private string _canOpenNodeStatus = "n/a";
+    public string CanOpenNodeStatus { get => _canOpenNodeStatus; set => SetField(ref _canOpenNodeStatus, value); }
+
+    private bool _isCanOpenNodeOperational;
+    public bool IsCanOpenNodeOperational { get => _isCanOpenNodeOperational; set => SetField(ref _isCanOpenNodeOperational, value); }
+
+    // SDO test panel - reads/writes one object dictionary entry on CanOpenNodeId, for configuration
+    // registers that aren't exchanged cyclically via PDO (e.g. calibration constants, thresholds).
+    private string _sdoIndexHex = "2000";
+    public string SdoIndexHex { get => _sdoIndexHex; set => SetField(ref _sdoIndexHex, value); }
+
+    private int _sdoSubIndex;
+    public int SdoSubIndex { get => _sdoSubIndex; set => SetField(ref _sdoSubIndex, value); }
+
+    public Array SdoDataTypeChoices { get; } =
+        new[] { CanDataType.UInt8, CanDataType.Int8, CanDataType.UInt16, CanDataType.Int16, CanDataType.UInt32, CanDataType.Int32, CanDataType.Float32 };
+
+    private CanDataType _sdoDataType = CanDataType.UInt16;
+    public CanDataType SdoDataType { get => _sdoDataType; set => SetField(ref _sdoDataType, value); }
+
+    private string _sdoValueText = "0";
+    public string SdoValueText { get => _sdoValueText; set => SetField(ref _sdoValueText, value); }
+
+    private string _sdoResult = string.Empty;
+    public string SdoResult { get => _sdoResult; set => SetField(ref _sdoResult, value); }
+
     private string _mappingProfileName = "Default Profile";
     public string MappingProfileName { get => _mappingProfileName; set => SetField(ref _mappingProfileName, value); }
 
@@ -103,6 +178,12 @@ public sealed class MainViewModel : ObservableObject
     public AsyncRelayCommand DisconnectCanCommand { get; }
     public RelayCommand LoadMappingCommand { get; }
     public RelayCommand SaveMappingCommand { get; }
+
+    public AsyncRelayCommand StartNodeCommand { get; }
+    public AsyncRelayCommand StopNodeCommand { get; }
+    public AsyncRelayCommand ResetNodeCommand { get; }
+    public AsyncRelayCommand SdoReadCommand { get; }
+    public AsyncRelayCommand SdoWriteCommand { get; }
 
     public MainViewModel()
     {
@@ -124,6 +205,12 @@ public sealed class MainViewModel : ObservableObject
 
         LoadMappingCommand = new RelayCommand(LoadMapping);
         SaveMappingCommand = new RelayCommand(SaveMapping);
+
+        StartNodeCommand = new AsyncRelayCommand(() => SendNmtCommandAsync(NmtCommand.Start), () => EnableCanOpen && IsCanOpen, ReportError);
+        StopNodeCommand = new AsyncRelayCommand(() => SendNmtCommandAsync(NmtCommand.Stop), () => EnableCanOpen && IsCanOpen, ReportError);
+        ResetNodeCommand = new AsyncRelayCommand(() => SendNmtCommandAsync(NmtCommand.ResetNode), () => EnableCanOpen && IsCanOpen, ReportError);
+        SdoReadCommand = new AsyncRelayCommand(SdoReadAsync, () => EnableCanOpen && IsCanOpen, ReportError);
+        SdoWriteCommand = new AsyncRelayCommand(SdoWriteAsync, () => EnableCanOpen && IsCanOpen, ReportError);
 
         LoadDefaultMappingIfPresent();
     }
@@ -314,6 +401,7 @@ public sealed class MainViewModel : ObservableObject
 
     private async Task ConnectCanAsync()
     {
+        TeardownCanOpen();
         _activeCanAdapter?.Dispose();
 
         _activeCanAdapter = SelectedCanAdapter switch
@@ -334,16 +422,208 @@ public sealed class MainViewModel : ObservableObject
         await _activeCanAdapter.OpenAsync(connectionString);
         IsCanOpen = true;
         CanStatus = $"{_activeCanAdapter.Name}: open ({connectionString})";
+
+        if (EnableCanOpen)
+        {
+            SetupCanOpen(adapterRef);
+
+            if (CanOpenAutoStart)
+            {
+                await AutoStartNodeAsync();
+            }
+        }
+    }
+
+    private async Task AutoStartNodeAsync()
+    {
+        if (_canOpenNmtMaster is null) return;
+
+        try
+        {
+            await _canOpenNmtMaster.StartNodeAsync(CanOpenNodeId);
+            AppLog.Info("CANopen", $"Sent NMT Start to node {CanOpenNodeId}.");
+        }
+        catch (Exception ex)
+        {
+            AppLog.Warning("CANopen", $"Failed to send NMT Start to node {CanOpenNodeId}: {ex.Message}");
+        }
     }
 
     private async Task DisconnectCanAsync()
     {
         if (_activeCanAdapter is null) return;
+        TeardownCanOpen();
         await _activeCanAdapter.CloseAsync();
         _activeCanAdapter.Dispose();
         _activeCanAdapter = null;
         IsCanOpen = false;
         CanStatus = "Closed";
+    }
+
+    // ---- CANopen -----------------------------------------------------------------------
+
+    private void SetupCanOpen(ICanBusAdapter adapter)
+    {
+        _canOpenNmtMaster = new CanOpenNmtMaster(adapter);
+        _canOpenSdoClient = new CanOpenSdoClient(adapter, CanOpenNodeId);
+
+        _canOpenHeartbeatMonitor = new CanOpenHeartbeatMonitor();
+        _canOpenHeartbeatMonitor.NodeStateChanged += OnCanOpenNodeStateChanged;
+        _canOpenHeartbeatMonitor.NodeTimedOut += OnCanOpenNodeTimedOut;
+
+        RunOnUi(() =>
+        {
+            CanOpenNodeStatus = "waiting for heartbeat...";
+            IsCanOpenNodeOperational = false;
+        });
+    }
+
+    private void TeardownCanOpen()
+    {
+        if (_canOpenHeartbeatMonitor is not null)
+        {
+            _canOpenHeartbeatMonitor.NodeStateChanged -= OnCanOpenNodeStateChanged;
+            _canOpenHeartbeatMonitor.NodeTimedOut -= OnCanOpenNodeTimedOut;
+            _canOpenHeartbeatMonitor.Dispose();
+            _canOpenHeartbeatMonitor = null;
+        }
+
+        _canOpenSdoClient?.Dispose();
+        _canOpenSdoClient = null;
+        _canOpenNmtMaster = null;
+
+        RunOnUi(() =>
+        {
+            CanOpenNodeStatus = "n/a";
+            IsCanOpenNodeOperational = false;
+        });
+    }
+
+    private Task SendNmtCommandAsync(NmtCommand command)
+    {
+        if (_canOpenNmtMaster is null)
+        {
+            AppLog.Warning("CANopen", "Cannot send NMT command: enable CANopen and open the CAN adapter first.");
+            return Task.CompletedTask;
+        }
+
+        return _canOpenNmtMaster.SendAsync(command, CanOpenNodeId);
+    }
+
+    private void OnCanOpenNodeStateChanged(object? sender, NodeStateChangedEventArgs e)
+    {
+        AppLog.Info("CANopen", $"Node {e.NodeId} NMT state: {e.PreviousState} -> {e.State}.");
+        if (e.NodeId != CanOpenNodeId) return;
+
+        RunOnUi(() =>
+        {
+            CanOpenNodeStatus = $"Node {e.NodeId}: {e.State}";
+            IsCanOpenNodeOperational = e.State == NmtState.Operational;
+        });
+    }
+
+    private void OnCanOpenNodeTimedOut(object? sender, NodeTimedOutEventArgs e)
+    {
+        AppLog.Warning("CANopen", $"Node {e.NodeId} heartbeat timed out.");
+        if (e.NodeId != CanOpenNodeId) return;
+
+        RunOnUi(() =>
+        {
+            CanOpenNodeStatus = $"Node {e.NodeId}: heartbeat lost";
+            IsCanOpenNodeOperational = false;
+        });
+    }
+
+    private async Task SdoReadAsync()
+    {
+        if (_canOpenSdoClient is null)
+        {
+            AppLog.Warning("CANopen", "Cannot read SDO: enable CANopen and open the CAN adapter first.");
+            return;
+        }
+
+        if (!TryParseSdoIndex(out ushort index)) return;
+        byte subIndex = (byte)Math.Clamp(SdoSubIndex, 0, 255);
+
+        try
+        {
+            double value = SdoDataType switch
+            {
+                CanDataType.UInt8 => await _canOpenSdoClient.UploadUInt8Async(index, subIndex),
+                CanDataType.Int8 => await _canOpenSdoClient.UploadInt8Async(index, subIndex),
+                CanDataType.UInt16 => await _canOpenSdoClient.UploadUInt16Async(index, subIndex),
+                CanDataType.Int16 => await _canOpenSdoClient.UploadInt16Async(index, subIndex),
+                CanDataType.UInt32 => await _canOpenSdoClient.UploadUInt32Async(index, subIndex),
+                CanDataType.Int32 => await _canOpenSdoClient.UploadInt32Async(index, subIndex),
+                CanDataType.Float32 => await _canOpenSdoClient.UploadFloat32Async(index, subIndex),
+                _ => throw new InvalidOperationException("Unsupported SDO data type.")
+            };
+
+            SdoValueText = value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            SdoResult = $"OK: 0x{index:X4}:{subIndex} = {value}";
+            AppLog.Info("CANopen", $"SDO read 0x{index:X4}:{subIndex} = {value}.");
+        }
+        catch (Exception ex)
+        {
+            SdoResult = $"Error: {ex.Message}";
+            AppLog.Error("CANopen", $"SDO read of 0x{index:X4}:{subIndex} failed: {ex.Message}");
+        }
+    }
+
+    private async Task SdoWriteAsync()
+    {
+        if (_canOpenSdoClient is null)
+        {
+            AppLog.Warning("CANopen", "Cannot write SDO: enable CANopen and open the CAN adapter first.");
+            return;
+        }
+
+        if (!TryParseSdoIndex(out ushort index)) return;
+        byte subIndex = (byte)Math.Clamp(SdoSubIndex, 0, 255);
+
+        if (!double.TryParse(SdoValueText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double value))
+        {
+            SdoResult = $"Error: '{SdoValueText}' is not a number.";
+            return;
+        }
+
+        try
+        {
+            switch (SdoDataType)
+            {
+                case CanDataType.UInt8: await _canOpenSdoClient.DownloadUInt8Async(index, subIndex, (byte)Math.Clamp(value, 0, 255)); break;
+                case CanDataType.Int8: await _canOpenSdoClient.DownloadInt8Async(index, subIndex, (sbyte)Math.Clamp(value, sbyte.MinValue, sbyte.MaxValue)); break;
+                case CanDataType.UInt16: await _canOpenSdoClient.DownloadUInt16Async(index, subIndex, (ushort)Math.Clamp(value, 0, ushort.MaxValue)); break;
+                case CanDataType.Int16: await _canOpenSdoClient.DownloadInt16Async(index, subIndex, (short)Math.Clamp(value, short.MinValue, short.MaxValue)); break;
+                case CanDataType.UInt32: await _canOpenSdoClient.DownloadUInt32Async(index, subIndex, (uint)Math.Clamp(value, 0, uint.MaxValue)); break;
+                case CanDataType.Int32: await _canOpenSdoClient.DownloadInt32Async(index, subIndex, (int)Math.Clamp(value, int.MinValue, int.MaxValue)); break;
+                case CanDataType.Float32: await _canOpenSdoClient.DownloadFloat32Async(index, subIndex, (float)value); break;
+                default: throw new InvalidOperationException("Unsupported SDO data type.");
+            }
+
+            SdoResult = $"OK: wrote {value} to 0x{index:X4}:{subIndex}";
+            AppLog.Info("CANopen", $"SDO write 0x{index:X4}:{subIndex} = {value}.");
+        }
+        catch (Exception ex)
+        {
+            SdoResult = $"Error: {ex.Message}";
+            AppLog.Error("CANopen", $"SDO write of 0x{index:X4}:{subIndex} failed: {ex.Message}");
+        }
+    }
+
+    private bool TryParseSdoIndex(out ushort index)
+    {
+        string s = SdoIndexHex.Trim();
+        if (s.StartsWith("0x", StringComparison.OrdinalIgnoreCase)) s = s[2..];
+
+        if (ushort.TryParse(s, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture, out index))
+        {
+            return true;
+        }
+
+        SdoResult = $"Error: '{SdoIndexHex}' is not a valid hex object index.";
+        index = 0;
+        return false;
     }
 
     private void OnCanFrameReady(object? sender, CanFrame frame)
@@ -358,6 +638,7 @@ public sealed class MainViewModel : ObservableObject
     private void OnCanFrameReceived(object? sender, CanFrameReceivedEventArgs e)
     {
         _mappingEngine.OnCanFrameReceived(e.Frame);
+        _canOpenHeartbeatMonitor?.OnCanFrameReceived(e.Frame);
         AddTrafficRow(e.Frame);
     }
 

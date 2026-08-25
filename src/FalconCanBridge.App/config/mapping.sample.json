@@ -130,6 +130,28 @@
       "MaxValue": 1,
       "SendRateMs": 0,
       "ChangeThreshold": 0.0
+    },
+    {
+      "Id": "in-canopen-tpdo1-example",
+      "Enabled": false,
+      "Name": "EXAMPLE - CANopen node 1 TPDO1 byte 0 bit 0 -> BMS",
+      "Direction": "CanToSim",
+      "Target": "Falcon4Bms",
+      "SignalName": "",
+      "CommandName": "GearHandle",
+      "CanId": 385,
+      "ExtendedId": false,
+      "ByteOffset": 0,
+      "BitOffset": 0,
+      "DataType": "Bit",
+      "LittleEndian": true,
+      "Scale": 1.0,
+      "Offset": 0.0,
+      "MinValue": 0,
+      "MaxValue": 1,
+      "SendRateMs": 0,
+      "ChangeThreshold": 0.0,
+      "Notes": "Disabled by default - only relevant if you've ticked 'Enable CANopen' and your STM32 node speaks CANopen (see README 'CANopen support'). CanId 385 = 0x181 = TPDO1 for node ID 1 (0x180 + 1), the predefined-connection-set COB-ID a CANopen node uses to transmit its first PDO - no different from any other CanToSim row otherwise. Re-target ByteOffset/BitOffset/CommandName to whatever your firmware actually packs into that PDO."
     }
   ]
 }
