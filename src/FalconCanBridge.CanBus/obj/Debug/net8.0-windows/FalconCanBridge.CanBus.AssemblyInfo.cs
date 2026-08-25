@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FalconCanBridge.CanBus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+feea5436d9696a755585ee957ccd5abd86a78b03")]
 [assembly: System.Reflection.AssemblyProductAttribute("FalconCanBridge.CanBus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FalconCanBridge.CanBus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -7,7 +7,7 @@
       "Name": "Airspeed gauge (BMS)",
       "Direction": "SimToCan",
       "Target": "Falcon4Bms",
-      "SignalName": "AirspeedKias",
+      "SignalName": "kias",
       "CommandName": "",
       "CanId": 256,
       "ExtendedId": false,
@@ -28,7 +28,7 @@
       "Name": "Altitude gauge (BMS)",
       "Direction": "SimToCan",
       "Target": "Falcon4Bms",
-      "SignalName": "AltitudeMslFt",
+      "SignalName": "aauz",
       "CommandName": "",
       "CanId": 256,
       "ExtendedId": false,
@@ -42,7 +42,7 @@
       "MaxValue": 65000,
       "SendRateMs": 100,
       "ChangeThreshold": 2.0,
-      "Notes": "Scale 0.1 packs 0-6550 (x10 ft) into a UInt16 - adjust to taste."
+      "Notes": "'aauz' is BMS's AAU barometric altimeter reading (feet, from the secondary FalconSharedMemoryArea2 block) - the closest real equivalent to a cockpit altimeter. There is no direct 'AltitudeMslFt' field in BMS's shared memory; 'z' (ownship Down, Ft, primary block) is the raw sim-coordinate alternative if you'd rather derive MSL altitude yourself (negate it). Scale 0.1 here packs 0-6550 (x10 ft) into a UInt16 - adjust to taste."
     },
     {
       "Id": "out-master-caution",
@@ -50,7 +50,7 @@
       "Name": "Master caution light (BMS)",
       "Direction": "SimToCan",
       "Target": "Falcon4Bms",
-      "SignalName": "MasterCaution",
+      "SignalName": "lightBits_MasterCaution",
       "CommandName": "",
       "CanId": 257,
       "ExtendedId": false,
@@ -64,7 +64,7 @@
       "MaxValue": 1,
       "SendRateMs": 50,
       "ChangeThreshold": 0.0,
-      "Notes": "Placeholder - 'MasterCaution' is not in the default Falcon4 field table. Add it to config/falcon4-fields.sample.json with a verified byte offset before enabling in earnest."
+      "Notes": "'lightBits_MasterCaution' is bit 0 of BMS's lightBits word (left eyebrow master caution lamp), decoded automatically by the app's built-in Falcon4 field table - see Falcon4NativeFieldMapBuilder in the source. As with every signal in this profile, sanity-check it against the Live Telemetry tab before wiring real hardware."
     },
     {
       "Id": "out-dcs-airspeed-example",
@@ -130,6 +130,28 @@
       "MaxValue": 1,
       "SendRateMs": 0,
       "ChangeThreshold": 0.0
+    },
+    {
+      "Id": "in-canopen-tpdo1-example",
+      "Enabled": false,
+      "Name": "EXAMPLE - CANopen node 1 TPDO1 byte 0 bit 0 -> BMS",
+      "Direction": "CanToSim",
+      "Target": "Falcon4Bms",
+      "SignalName": "",
+      "CommandName": "GearHandle",
+      "CanId": 385,
+      "ExtendedId": false,
+      "ByteOffset": 0,
+      "BitOffset": 0,
+      "DataType": "Bit",
+      "LittleEndian": true,
+      "Scale": 1.0,
+      "Offset": 0.0,
+      "MinValue": 0,
+      "MaxValue": 1,
+      "SendRateMs": 0,
+      "ChangeThreshold": 0.0,
+      "Notes": "Disabled by default - only relevant if you've ticked 'Enable CANopen' and your STM32 node speaks CANopen (see README 'CANopen support'). CanId 385 = 0x181 = TPDO1 for node ID 1 (0x180 + 1), the predefined-connection-set COB-ID a CANopen node uses to transmit its first PDO - no different from any other CanToSim row otherwise. Re-target ByteOffset/BitOffset/CommandName to whatever your firmware actually packs into that PDO."
     }
   ]
 }

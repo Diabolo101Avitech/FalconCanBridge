@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}|\u00C9l\u00E9ments de solution{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}|C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\lightningstools\\SimplifiedCommon\\SimplifiedCommon.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}|\u00C9l\u00E9ments de solution{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}|solutionrelative:src\\lightningstools\\SimplifiedCommon\\SimplifiedCommon.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}|\u00C9l\u00E9ments de solution{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}|C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\lightningstools\\F4SharedMem\\F4SharedMem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}|\u00C9l\u00E9ments de solution{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}|solutionrelative:src\\lightningstools\\F4SharedMem\\F4SharedMem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SimplifiedCommon.csproj",
+              "DocumentMoniker": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\lightningstools\\SimplifiedCommon\\SimplifiedCommon.csproj",
+              "RelativeDocumentMoniker": "src\\lightningstools\\SimplifiedCommon\\SimplifiedCommon.csproj",
+              "ToolTip": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\lightningstools\\SimplifiedCommon\\SimplifiedCommon.csproj",
+              "RelativeToolTip": "src\\lightningstools\\SimplifiedCommon\\SimplifiedCommon.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-08-25T16:03:08.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "F4SharedMem.csproj",
+              "DocumentMoniker": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\lightningstools\\F4SharedMem\\F4SharedMem.csproj",
+              "RelativeDocumentMoniker": "src\\lightningstools\\F4SharedMem\\F4SharedMem.csproj",
+              "ToolTip": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\lightningstools\\F4SharedMem\\F4SharedMem.csproj",
+              "RelativeToolTip": "src\\lightningstools\\F4SharedMem\\F4SharedMem.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-08-25T16:02:48.523Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

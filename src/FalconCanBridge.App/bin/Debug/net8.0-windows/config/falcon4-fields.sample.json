@@ -1,19 +1,13 @@
 [
-  { "Name": "PositionX",         "ByteOffset": 0,  "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "PositionY",         "ByteOffset": 4,  "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "PositionZ",         "ByteOffset": 8,  "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "VelocityX",         "ByteOffset": 12, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "VelocityY",         "ByteOffset": 16, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "VelocityZ",         "ByteOffset": 20, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "AngleOfAttackDeg",  "ByteOffset": 24, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "SideslipDeg",       "ByteOffset": 28, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "FlightPathDeg",     "ByteOffset": 32, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "PitchDeg",          "ByteOffset": 36, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "RollDeg",           "ByteOffset": 40, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "YawDeg",            "ByteOffset": 44, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "Mach",              "ByteOffset": 48, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "AirspeedKias",      "ByteOffset": 52, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "TrueAirspeedFtSec", "ByteOffset": 56, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "AltitudeMslFt",     "ByteOffset": 60, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" },
-  { "Name": "AltitudeAglFt",     "ByteOffset": 64, "Type": "Float32", "BitIndex": 0, "Scale": 1.0, "Offset": 0.0, "Notes": "best effort - confirm offset" }
+  {
+    "Name": "AirspeedKts",
+    "ByteOffset": 52,
+    "Type": "Float32",
+    "BitIndex": 0,
+    "Scale": 1.0,
+    "Offset": 0.0,
+    "MinValue": 0,
+    "MaxValue": 900,
+    "Notes": "EXAMPLE ONLY - this file now MERGES onto the app's built-in, comprehensive field table (every scalar/RWR/light-bit signal from BMS's BMS4FlightData/FlightData2 structs - see Falcon4FieldMap in the source) instead of replacing it. You normally don't need this file at all: reference the native field names directly in your mapping profile (e.g. 'kias' for indicated airspeed, 'z' for ownship down-position, 'aauz' for the AAU altimeter reading, 'lightBits_MasterCaution' for the master caution lamp, ...). This entry just shows how to add a friendlier alias name for an existing field (here: 'kias' at byte offset 52) with tighter Min/Max clamps for a specific gauge - delete it, or add your own entries the same way, and set Enabled:false on any of the ~500 built-in fields you want to hide from the Live Telemetry list without disabling the whole default table."
+  }
 ]

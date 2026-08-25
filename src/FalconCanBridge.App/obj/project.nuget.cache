@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "10B30jqB2Yk=",
+  "dgSpecHash": "9b91ErM8WRc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj",
+  "projectFilePath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\virwa\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
     "C:\\Users\\virwa\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",

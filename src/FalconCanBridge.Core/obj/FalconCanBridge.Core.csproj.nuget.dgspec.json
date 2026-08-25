@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {}
+    "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+    "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
+        "projectUniqueName": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
         "projectName": "FalconCanBridge.Core",
-        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
+        "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
         "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\obj\\",
+        "outputPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

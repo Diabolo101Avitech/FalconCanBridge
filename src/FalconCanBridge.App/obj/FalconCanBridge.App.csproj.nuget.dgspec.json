@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj": {}
+    "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj": {
+    "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj",
+        "projectUniqueName": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj",
         "projectName": "FalconCanBridge",
-        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj",
+        "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.App\\FalconCanBridge.App.csproj",
         "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.App\\obj\\",
+        "outputPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,17 +32,17 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj": {
-                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj"
+              "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj": {
+                "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj"
               },
-              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
-                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
+              "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+                "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
               },
-              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj": {
-                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj"
+              "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj": {
+                "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj"
               },
-              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj": {
-                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj"
+              "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj": {
+                "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj"
               }
             }
           }
@@ -85,14 +85,14 @@
         }
       }
     },
-    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj": {
+    "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj",
+        "projectUniqueName": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj",
         "projectName": "FalconCanBridge.CanBus",
-        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj",
+        "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\FalconCanBridge.CanBus.csproj",
         "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\obj\\",
+        "outputPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.CanBus\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -113,8 +113,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
-                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
+              "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+                "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
               }
             }
           }
@@ -160,14 +160,14 @@
         }
       }
     },
-    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+    "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
+        "projectUniqueName": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
         "projectName": "FalconCanBridge.Core",
-        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
+        "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj",
         "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\obj\\",
+        "outputPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -225,14 +225,14 @@
         }
       }
     },
-    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj": {
+    "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj",
+        "projectUniqueName": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj",
         "projectName": "FalconCanBridge.Simulators.Dcs",
-        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj",
+        "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\FalconCanBridge.Simulators.Dcs.csproj",
         "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\obj\\",
+        "outputPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Dcs\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -253,8 +253,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
-                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
+              "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+                "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
               }
             }
           }
@@ -294,14 +294,14 @@
         }
       }
     },
-    "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj": {
+    "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj",
+        "projectUniqueName": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj",
         "projectName": "FalconCanBridge.Simulators.Falcon4",
-        "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj",
+        "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\FalconCanBridge.Simulators.Falcon4.csproj",
         "packagesPath": "C:\\Users\\virwa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\obj\\",
+        "outputPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Simulators.Falcon4\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -322,8 +322,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
-                "projectPath": "C:\\Users\\virwa\\Downloads\\Claude\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
+              "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj": {
+                "projectPath": "C:\\Users\\virwa\\OneDrive\\Documents\\GitHub\\FalconCanBridge\\src\\FalconCanBridge.Core\\FalconCanBridge.Core.csproj"
               }
             }
           }
